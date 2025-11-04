@@ -1,0 +1,29 @@
+# Ignore sensitive files
+config/database.php
+*.log
+*.sql
+
+# Ignore uploads
+uploads/*
+!uploads/.gitkeep
+
+# Ignore logs
+logs/*
+!logs/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.cache
+
