@@ -1,5 +1,285 @@
+# University Assets Management System (UAMS)
+
+An advanced system for managing all types of assets within a university using PHP Native and MySQL with Bootstrap Responsive design.
+
+---
+
+## Key Features
+
+### 1. Comprehensive Asset Management
+- Support for all asset types (IT Equipment, Laboratory Equipment, Furniture, etc.)
+- Multi-level categorizations
+- Complete barcode and QR Code tracking
+- Financial value and depreciation management
+
+### 2. Hierarchical Location Management
+- Campus → Faculty → Department → Lab/Office
+- Precise tracking of each asset's location
+- Support for transfers and returns between locations
+
+### 3. Advanced Maintenance System
+- Complete maintenance operations log
+- Automatic notifications for upcoming maintenance
+- Cost and service provider tracking
+
+### 4. Loan and Transfer System
+- Asset loans to users
+- Asset transfers between locations
+- Complete tracking of transfer and loan history
+
+### 5. Reports and Statistics
+- Reports by category, location, and status
+- Comprehensive financial reports
+- Maintenance reports
+
+### 6. Permission System
+- Multiple roles (Admin, Faculty Manager, Lab Manager, Staff)
+- Role-specific permissions
+- Complete activity log
+
+---
+
+## System Requirements
+
+- PHP 7.4 or later
+- MySQL 5.7 or later
+- Apache/Nginx Web Server
+- Extensions: PDO, PDO_MySQL
+
+---
+
+## Installation
+
+### 1. Import Database
+
+```bash
+mysql -u root -p < database/schema.sql
+```
+
+Or use phpMyAdmin to import the `database/schema.sql` file
+
+### 2. Configure Database Connection
+
+Edit `config/database.php`:
+
+```php
+private $host = 'localhost';
+private $dbname = 'university_assets_db';
+private $username = 'root';
+private $password = '';
+```
+
+### 3. Configure URL
+
+Edit `config/config.php`:
+
+The system auto-detects the URL, but you can manually set it if needed.
+
+### 4. Create Upload Directories (Optional)
+
+```bash
+mkdir uploads
+mkdir logs
+chmod 755 uploads logs
+```
+
+---
+
+## Default Login Credentials
+
+- **Username:** admin
+- **Password:** admin123
+
+**⚠️ Important:** Change the default password immediately after installation!
+
+---
+
+## Project Structure
+
+```
+Assets Management Module/
+├── config/              # Configuration files
+│   ├── config.php      # Application settings
+│   ├── database.php    # Database connection
+│   └── functions.php    # Helper functions
+├── database/           # Database files
+│   └── schema.sql      # Database schema
+├── includes/           # Shared files
+│   ├── header.php      # Page header
+│   └── footer.php      # Page footer
+├── modules/            # Modules
+│   ├── assets/         # Asset management
+│   ├── locations/      # Location management
+│   ├── maintenance/    # Maintenance management
+│   ├── transfers/      # Transfers and loans
+│   ├── users/          # User management
+│   ├── settings/       # System settings
+│   └── reports/        # Reports
+├── assets/             # Static resources
+│   ├── css/
+│   └── js/
+├── uploads/            # Uploaded files
+├── logs/               # Log files
+├── index.php           # Home page
+├── login.php           # Login page
+└── logout.php          # Logout page
+```
+
+---
+
+## Security
+
+### SQL Injection Protection
+- Using **Prepared Statements** in all queries
+- Using PDO with `PDO::ATTR_EMULATE_PREPARES => false`
+- Sanitizing all inputs using `sanitizeInput()`
+
+### XSS Protection
+- Using `htmlspecialchars()` when displaying data
+- Sanitizing inputs before saving
+
+### Session Security
+- `session.cookie_httponly = 1`
+- `session.use_only_cookies = 1`
+- Password hashing using `password_hash()`
+
+---
+
+## User Roles
+
+### Admin
+- Full access to all functions
+- User management
+- Delete assets and locations
+
+### Faculty Manager
+- Manage assets in the faculty
+- View reports
+- Manage maintenance
+
+### Lab Manager
+- Manage assets in the lab
+- Record maintenance
+- Loan assets
+
+### Staff
+- View assets
+- Add new assets
+- Edit assigned assets
+
+---
+
+## Main Functions
+
+### Asset Management
+- Add/Edit/Delete/View assets
+- Advanced search and filtering
+- Financial value tracking
+- Warranty management
+
+### Location Management
+- Add new locations (labs, offices, rooms)
+- View organizational structure
+- Track assets in each location
+
+### Maintenance Management
+- Record maintenance operations
+- Schedule upcoming maintenance
+- Cost tracking
+
+### Transfers and Loans
+- Transfer assets between locations
+- Loan assets to users
+- Track active loans
+
+### Reports
+- Reports by category
+- Reports by location
+- Financial reports
+- Maintenance reports
+
+---
+
+## Future Development
+
+- [ ] Email notifications
+- [ ] Barcode Scanner support
+- [ ] API for integration with other systems
+- [ ] Export reports to Excel/PDF
+- [ ] Advanced dashboard with charts
+- [ ] Mobile application
+
+---
+
+## Support
+
+For help and support, please contact the development team.
+
+---
+
+## License
+
+This project is intended for internal university use.
+
+---
+
+## Important Notes
+
+1. **Security:** Make sure to change the default password immediately
+2. **Backup:** Perform regular database backups
+3. **Updates:** Monitor PHP and MySQL updates to maintain security
+4. **Performance:** Use database indexing for large tables
+
+---
+
+## About Development
+
+### Development Methodology
+
+This project was built entirely using **Artificial Intelligence (AI)** technologies in software development, following best practices and modern programming standards.
+
+### Development Process
+
+1. **AI-Assisted Development:**
+   - Using AI to write the core code
+   - Applying Clean Code principles
+   - Using appropriate Design Patterns
+   - Implementing Security Best Practices
+
+2. **Review and Audit:**
+   - Comprehensive personal review of all screens (UI/UX)
+   - Examination and analysis of business logic
+   - Review of business models
+   - Testing all functions and features
+   - Security and performance verification
+
+3. **Quality Assurance:**
+   - Testing all scenarios
+   - Ensuring requirement compliance
+   - Verifying user experience
+   - Security and privacy review
+
+### Technical Features
+
+- ✅ **Clean and organized code:** Following PSR standards and modern programming practices
+- ✅ **High security:** Protection against SQL Injection and XSS
+- ✅ **Optimized performance:** Optimized database queries
+- ✅ **Responsive design:** Works on all devices
+- ✅ **Easy maintenance:** Clear and documented code
+
+---
+
+**Developed by:** Mohamed Hekal  
+**Using:** AI-Assisted Development  
+**With comprehensive review:** Of all screens, logic, and business models  
+**Version:** 1.0.0  
+**Date:** 11/2025
+
+---
+
+---
+
 # نظام إدارة الأصول الجامعية
-## University Assets Management System (UAMS)
 
 نظام متقدم لإدارة جميع أنواع الأصول داخل الجامعة باستخدام PHP Native و MySQL مع تصميم Bootstrap Responsive.
 
@@ -37,199 +317,6 @@
 - أدوار متعددة (Admin, Faculty Manager, Lab Manager, Staff)
 - صلاحيات محددة حسب الدور
 - سجل كامل للأنشطة
-
----
-
-## متطلبات التشغيل
-
-- PHP 7.4 أو أحدث
-- MySQL 5.7 أو أحدث
-- Apache/Nginx Web Server
-- Extension: PDO, PDO_MySQL
-
----
-
-## التثبيت
-
-### 1. استيراد قاعدة البيانات
-
-```bash
-mysql -u root -p < database/schema.sql
-```
-
-أو استخدام phpMyAdmin لاستيراد ملف `database/schema.sql`
-
-### 2. إعداد الاتصال بقاعدة البيانات
-
-عدّل ملف `config/database.php`:
-
-```php
-private $host = 'localhost';
-private $dbname = 'university_assets_db';
-private $username = 'root';
-private $password = '';
-```
-
-### 3. إعداد URL
-
-عدّل ملف `config/config.php`:
-
-```php
-define('SITE_URL', 'http://localhost/Assets Management Module');
-```
-
-### 4. إنشاء مجلدات الرفع (اختياري)
-
-```bash
-mkdir uploads
-mkdir logs
-chmod 755 uploads logs
-```
-
----
-
-## بيانات الدخول الافتراضية
-
-- **Username:** admin
-- **Password:** admin123
-
-**⚠️ مهم:** قم بتغيير كلمة المرور فوراً بعد التثبيت!
-
----
-
-## هيكل المشروع
-
-```
-Assets Management Module/
-├── config/              # ملفات الإعدادات
-│   ├── config.php      # إعدادات التطبيق
-│   ├── database.php    # اتصال قاعدة البيانات
-│   └── functions.php    # الدوال المساعدة
-├── database/           # ملفات قاعدة البيانات
-│   └── schema.sql      # هيكل قاعدة البيانات
-├── includes/           # الملفات المشتركة
-│   ├── header.php      # رأس الصفحة
-│   └── footer.php      # تذييل الصفحة
-├── modules/            # الوحدات
-│   ├── assets/         # إدارة الأصول
-│   ├── locations/      # إدارة المواقع
-│   ├── maintenance/    # إدارة الصيانة
-│   ├── transfers/      # النقل والإعارة
-│   └── reports/        # التقارير
-├── assets/             # الموارد الثابتة
-│   ├── css/
-│   └── js/
-├── uploads/            # الملفات المرفوعة
-├── logs/               # ملفات السجلات
-├── index.php           # الصفحة الرئيسية
-├── login.php           # تسجيل الدخول
-└── logout.php          # تسجيل الخروج
-```
-
----
-
-## الأمان
-
-### حماية من SQL Injection
-- استخدام **Prepared Statements** في جميع الاستعلامات
-- استخدام PDO مع `PDO::ATTR_EMULATE_PREPARES => false`
-- تنظيف جميع المدخلات باستخدام `sanitizeInput()`
-
-### حماية من XSS
-- استخدام `htmlspecialchars()` عند عرض البيانات
-- تنظيف المدخلات قبل الحفظ
-
-### حماية الجلسات
-- `session.cookie_httponly = 1`
-- `session.use_only_cookies = 1`
-- Hash كلمات المرور باستخدام `password_hash()`
-
----
-
-## الصلاحيات (Roles)
-
-### Admin
-- الوصول الكامل لجميع الوظائف
-- إدارة المستخدمين
-- حذف الأصول والمواقع
-
-### Faculty Manager
-- إدارة الأصول في الكلية
-- عرض التقارير
-- إدارة الصيانة
-
-### Lab Manager
-- إدارة الأصول في المختبر
-- تسجيل الصيانة
-- إعارة الأصول
-
-### Staff
-- عرض الأصول
-- إضافة أصول جديدة
-- تعديل الأصول المسؤول عنها
-
----
-
-## الوظائف الرئيسية
-
-### إدارة الأصول
-- إضافة/تعديل/حذف/عرض الأصول
-- البحث والفلترة المتقدمة
-- تتبع القيمة المالية
-- إدارة الضمان
-
-### إدارة المواقع
-- إضافة مواقع جديدة (مختبرات، مكاتب، غرف)
-- عرض الهيكل التنظيمي
-- تتبع الأصول في كل موقع
-
-### إدارة الصيانة
-- تسجيل عمليات الصيانة
-- جدولة الصيانة القادمة
-- تتبع التكلفة
-
-### النقل والإعارة
-- نقل الأصول بين المواقع
-- إعارة الأصول للمستخدمين
-- تتبع الإعارات النشطة
-
-### التقارير
-- تقارير حسب التصنيف
-- تقارير حسب الموقع
-- تقارير مالية
-- تقارير الصيانة
-
----
-
-## التطوير المستقبلي
-
-- [ ] إشعارات البريد الإلكتروني
-- [ ] دعم Barcode Scanner
-- [ ] API للربط مع أنظمة أخرى
-- [ ] تصدير التقارير إلى Excel/PDF
-- [ ] Dashboard متقدم مع الرسوم البيانية
-- [ ] تطبيق Mobile
-
----
-
-## الدعم
-
-للمساعدة والدعم، يرجى التواصل مع فريق التطوير.
-
----
-
-## الترخيص
-
-هذا المشروع مخصص للاستخدام الداخلي في الجامعة.
-
----
-
-## ملاحظات مهمة
-
-1. **الأمان:** تأكد من تغيير كلمة المرور الافتراضية فوراً
-2. **النسخ الاحتياطي:** قم بعمل نسخ احتياطي دوري لقاعدة البيانات
-3. **الترقية:** راقب تحديثات PHP و MySQL للحفاظ على الأمان
-4. **الأداء:** استخدم فهرسة قاعدة البيانات للجداول الكبيرة
 
 ---
 
@@ -275,4 +362,3 @@ Assets Management Module/
 **مع مراجعة شاملة:** لجميع الشاشات والمنطق ونماذج الأعمال  
 **الإصدار:** 1.0.0  
 **التاريخ:** 11/2025
-
